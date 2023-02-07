@@ -10,30 +10,32 @@ import android.provider.MediaStore
 import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.result.ActivityResult
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.practicaguias_pedro.R
 import com.example.practicaguias_pedro.databinding.ActivityFotosBinding
 
 class Fotos : AppCompatActivity() {
-    val binding = ActivityFotosBinding.inflate(layoutInflater)
+    lateinit var imagen: ImageView
+    val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()){
+        uri ->
+        if(uri != null){
+            imagen.setImageURI(uri)
+        }else{
+
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val binding = ActivityFotosBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val btnCamara = findViewById<Button>(R.id.BFotos)
 
-        btnCamara.setOnClickListener{
-            startForResult.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
+        imagen = binding.IImagen
+
+        imagen.setOnClickListener {
+            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
+
     }
 
-    private val startForResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-        result: ActivityResult ->
-        if(result.resultCode == Activity.RESULT_OK){
-            val intet = result.data
-            val imageBitmap = intent?.extras?.get("data") as Bitmap
-            val imageView = findViewById<ImageView>(R.id.imageView)
-            imageView.setImageBitmap(imageBitmap)
-        }
-    }
 }
