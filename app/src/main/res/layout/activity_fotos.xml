@@ -7,24 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".Activitys.Fotos">
 
-    <Button
-        android:id="@+id/BFotos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fotos"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IImagen" />
-
     <ImageView
         android:id="@+id/IImagen"
         android:layout_width="414dp"
         android:layout_height="646dp"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="324dp"
+        android:layout_height="85dp"
+        android:text="DALE AL CENTRO DE LA PANTALLA PARA SELECCIONAR FOTO"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IImagen"
+        app:layout_constraintVertical_bias="0.214"
+        tools:textStyle="bold" />
 </androidx.constraintlayout.widget.ConstraintLayout>
